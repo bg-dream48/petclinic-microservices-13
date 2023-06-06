@@ -3,11 +3,11 @@ provider "aws" {
 }
 
 variable "sec-gr-mutual" {
-  default = "petclinic-k8s-mutual-sec-group-1"
+  default = "petclinic-k8s-mutual-sec-group"
 }
 
 variable "sec-gr-k8s-master" {
-  default = "petclinic-k8s-master-sec-group-1"
+  default = "petclinic-k8s-master-sec-group"
 }
 
 variable "sec-gr-k8s-worker" {
@@ -18,7 +18,7 @@ data "aws_vpc" "name" {
   default = true
 }
 
-resource "aws_security_group" "petclinic-mutual-sg-1" {
+resource "aws_security_group" "petclinic-mutual-sg" {
   name = var.sec-gr-mutual
   vpc_id = data.aws_vpc.name.id
 
