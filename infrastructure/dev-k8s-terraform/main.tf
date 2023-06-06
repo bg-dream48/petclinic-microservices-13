@@ -3,11 +3,11 @@ provider "aws" {
 }
 
 variable "sec-gr-mutual" {
-  default = "petclinic-k8s-mutual-sec-group"
+  default = "petclinic-k8s-mutual-sec-group-1"
 }
 
 variable "sec-gr-k8s-master" {
-  default = "petclinic-k8s-master-sec-group"
+  default = "petclinic-k8s-master-sec-group-1"
 }
 
 variable "sec-gr-k8s-worker" {
@@ -18,7 +18,7 @@ data "aws_vpc" "name" {
   default = true
 }
 
-resource "aws_security_group" "petclinic-mutual-sg" {
+resource "aws_security_group" "petclinic-mutual-sg-1" {
   name = var.sec-gr-mutual
   vpc_id = data.aws_vpc.name.id
 
@@ -45,7 +45,7 @@ resource "aws_security_group" "petclinic-mutual-sg" {
 
 }
 
-resource "aws_security_group" "petclinic-kube-worker-sg" {
+resource "aws_security_group" "petclinic-kube-worker-sg-1" {
   name = var.sec-gr-k8s-worker
   vpc_id = data.aws_vpc.name.id
 
@@ -75,7 +75,7 @@ resource "aws_security_group" "petclinic-kube-worker-sg" {
   }
 }
 
-resource "aws_security_group" "petclinic-kube-master-sg" {
+resource "aws_security_group" "petclinic-kube-master-sg-1" {
   name = var.sec-gr-k8s-master
   vpc_id = data.aws_vpc.name.id
 
@@ -127,7 +127,7 @@ resource "aws_security_group" "petclinic-kube-master-sg" {
 }
 
 resource "aws_iam_role" "petclinic-master-server-s3-role" {
-  name               = "petclinic-master-server-role"
+  name               = "petclinic-master-server-role-1"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
